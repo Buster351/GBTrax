@@ -92,3 +92,10 @@ Public Sub Button1_Click()
   TextBox1.SetFocus
 
 End
+
+Public Sub Button2_Click()
+  'Remove Stock From Database
+   
+  
+
+End

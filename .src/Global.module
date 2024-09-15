@@ -1,0 +1,86 @@
+' Gambas module file
+
+Public DB_Filename As String
+Public DBConn As New Connection
+
+
+Public Sub OpenDb()
+
+  DBconn.Type = "sqlite3"
+  DBconn.Host = File.Dir(DB_Filename)
+  DBconn.Name = File.Name(DB_Filename)
+  DBconn.Open()
+  Message.Info("Database Open " & DBConn.Opened, "OK")
+  
+End
+
+Public Function Find_Product(Barcode As String) As Result
+  
+  Dim res As Result
+  Dim cat As Result 
+  Dim brand As Result
+  
+  res = Global.DBconn.Find("products", "barcode = &1", Barcode)
+  If res.Available
+  cat = Global.DBconn.Find("types", "id = &1", res!category)
+  brand = Global.DBconn.Find("brands", "id = &1", res!brand)
+  Print res
+  Print cat
+  Print brand
+  'If cat.Available Then ComboBox1.Text = cat!item
+  'ComboBox2.Text = brand!item
+  'If brand.Available Then ComboBox2.Index = ComboBox2.List.Find(brand!item)
+  
+  ' TextBox1.Text = res!partnum
+  ' TextArea1.Text = res!description
+  ' TextBox2.Text = res!price
+  ' TextBox3.text = res!barcode
+  ' 
+  ' If res!markup <> Null Then SliderBox1.Value = res!markup
+  ' If res!image <> Null Then
+  '   PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
+  ' Endif
+  
+  Endif 
+  Return res
+End
+
+Public Function Scale_Picture(p As Picture, width As Integer, height As Integer, aspect As Boolean) As Picture
+  
+  Dim img As Picture
+  Dim newImg As New Image
+  Dim ratioX As Float
+  Dim ratioY As Float
+  Dim ratio As Float
+  Dim newWidth As Integer
+  Dim newHeight As Integer
+  
+    
+  ratioX = width / p.Width
+  ratioY = height / p.Height
+  
+  If ratioX < ratioY 
+   ratio = ratioX
+  Else
+    ratio = ratioY
+  Endif
+  newWidth = p.Width * ratio
+  newHeight = p.Height * ratio
+  'newimg = New Image(newWidth, newHeight)
+  If aspect
+    newImg = p.Image.Stretch(newWidth, newHeight)
+  Else
+    newImg = p.Image.Stretch(width, height)
+  Endif
+  
+  Return newImg.Picture
+  Catch
+End
+
+Public Function Load_Picture_Blob(res As String) As Picture
+  Dim p As Picture
+  If Len(res) <> 0 Then
+    p = Picture.FromString(res)
+  Endif
+  Return p
+End 

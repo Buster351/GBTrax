@@ -10,10 +10,10 @@ Public Sub SliderBox1_Change()
 End
 
 Public Sub Form_Show()
+Dim res As Result
 
-  ListView1.Add("1", "Joel")
-  ListView1.Add("2", "Max")
-  ListView1.Add("3", "Shane")
+  
+  
   Me.Center
   TextBox1.SetFocus
   Global.DB_Filename = Settings["Database/Filename", ""]
@@ -22,7 +22,10 @@ Public Sub Form_Show()
   Else 
     Menu2_Click
   Endif 
-  
+  res = Global.DBConn.Find("users")
+  For Each res
+    ListBox1.Add(res!name, res!id)
+  Next 
 End
 
 Public Sub Menu2_Click()
@@ -68,7 +71,10 @@ Dim res As Result
   ' Process the barcode input
   If TextBox1.Text <> "" Then
     res = Global.Find_Product(TextBox1.Text)
-    If res.Available Then   
+    If res.Available Then
+      Label1.Text = res!partnum
+      Label2.Text = res!description
+         
       If res!image <> Null Then
          PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
       Endif
@@ -89,6 +95,9 @@ Public Sub Button1_Click()
   SliderBox1.MaxValue = 100
   SliderBox1.Value = 0
   PictureBox1.Picture = Null
+  Label1.Text = ""
+  Label2.Text = ""
+  
   TextBox1.SetFocus
 
 End
@@ -96,6 +105,13 @@ End
 Public Sub Button2_Click()
   'Remove Stock From Database
    
+  
+
+End
+
+Public Sub Menu4_Click()
+
+  Add_User.ShowModal
   
 
 End

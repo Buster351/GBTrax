@@ -2,6 +2,7 @@
 
 Public DB_Filename As String
 Public DBConn As New Connection
+Public Product_Id As Integer
 
 
 Public Sub OpenDb()
@@ -84,3 +85,74 @@ Public Function Load_Picture_Blob(res As String) As Picture
   Endif
   Return p
 End 
+
+
+Public Sub ReadCSV()
+  
+  Dim hFile As File
+  Dim sLine As String
+  Dim aFields As String[]
+  Dim rowIndex As Integer
+
+  ' Clear the GridView before populating it
+  'GridView1.Clear()
+
+  ' Open the CSV file for reading
+  ' Open the CSV file for reading
+  Try hFile = Open "/home/shane/Downloads/Stock.csv" For Read
+  
+  If Error Then
+    Print "Error opening file."
+    Return
+  Endif
+
+  ' Read the first line (header) to set up column headers
+  If Not Eof(hFile) Then
+    Line Input #hFile, sLine
+    aFields = Split(sLine, ",")
+
+    ' Set up columns based on the headers
+    ' GridView1.Columns.Count = aFields.Max + 1
+    ' GridView1.Columns[0].Width = 130
+    ' GridView1.Columns[1].width = 200
+    ' GridView1.Columns[2].width = 450
+    ' GridView1.Columns[3].width = 75
+    ' GridView1.Columns[4].width = 150
+    ' GridView1.Columns[5].width = 50
+    ' 
+    For i As Integer = 0 To aFields.Max
+      'GridView1.Columns[i].Title = UnQuote(aFields[i]) ' Set column headers
+      Print aFields[i]
+    Next
+  Endif
+
+  ' Initialize the row index for the actual data
+  rowIndex = 0
+
+  ' Read the remaining lines (data rows)
+  While Not Eof(hFile)
+    Line Input #hFile, sLine
+    aFields = Split(sLine, ",")
+
+    ' Set number of rows dynamically
+    'GridView1.Rows.Count = rowIndex + 1
+
+    ' Populate each cell in the current row
+    For i As Integer = 0 To aFields.Max
+       'GridView1[res.Index, 1].Text = product!partnum
+       'GridView1[res.Index, 2].Text = product!description
+      
+      'GridView1[rowIndex, i].Text = UnQuote(aFields[i]) ' Set cell text
+      Print aFields[i]
+      
+    Next
+
+    ' Increment row index
+    rowIndex += 1
+  Wend
+
+  ' Close the file after reading
+  Close hFile
+
+  
+End

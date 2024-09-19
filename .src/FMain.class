@@ -24,7 +24,8 @@ Dim res As Result
   Endif 
   res = Global.DBConn.Find("users")
   For Each res
-    ListBox1.Add(res!name, res!id)
+    
+    ListBox1.Add(res!name)
   Next 
 End
 

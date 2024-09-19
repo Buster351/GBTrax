@@ -87,7 +87,7 @@ Public Function Load_Picture_Blob(res As String) As Picture
 End 
 
 
-Public Sub ReadCSV()
+Public Sub ReadCSV(GV As GridView)
   
   Dim hFile As File
   Dim sLine As String
@@ -95,7 +95,7 @@ Public Sub ReadCSV()
   Dim rowIndex As Integer
 
   ' Clear the GridView before populating it
-  'GridView1.Clear()
+  'GV.Clear()
 
   ' Open the CSV file for reading
   ' Open the CSV file for reading
@@ -112,16 +112,16 @@ Public Sub ReadCSV()
     aFields = Split(sLine, ",")
 
     ' Set up columns based on the headers
-    ' GridView1.Columns.Count = aFields.Max + 1
-    ' GridView1.Columns[0].Width = 130
-    ' GridView1.Columns[1].width = 200
-    ' GridView1.Columns[2].width = 450
-    ' GridView1.Columns[3].width = 75
-    ' GridView1.Columns[4].width = 150
-    ' GridView1.Columns[5].width = 50
+    GV.Columns.Count = aFields.Max + 1
+    GV.Columns[0].Width = 130
+    GV.Columns[1].width = 200
+    GV.Columns[2].width = 450
+    GV.Columns[3].width = 75
+    GV.Columns[4].width = 150
+    GV.Columns[5].width = 50
     ' 
     For i As Integer = 0 To aFields.Max
-      'GridView1.Columns[i].Title = UnQuote(aFields[i]) ' Set column headers
+      GV.Columns[i].Title = UnQuote(aFields[i]) ' Set column headers
       Print aFields[i]
     Next
   Endif
@@ -135,14 +135,14 @@ Public Sub ReadCSV()
     aFields = Split(sLine, ",")
 
     ' Set number of rows dynamically
-    'GridView1.Rows.Count = rowIndex + 1
+    GV.Rows.Count = rowIndex + 1
 
     ' Populate each cell in the current row
     For i As Integer = 0 To aFields.Max
-       'GridView1[res.Index, 1].Text = product!partnum
-       'GridView1[res.Index, 2].Text = product!description
+       'GV[res.Index, 1].Text = product!partnum
+       'GV[res.Index, 2].Text = product!description
       
-      'GridView1[rowIndex, i].Text = UnQuote(aFields[i]) ' Set cell text
+      GV[rowIndex, i].Text = UnQuote(aFields[i]) ' Set cell text
       Print aFields[i]
       
     Next

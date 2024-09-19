@@ -1,0 +1,62 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,129,83)
+  { Menu1 Menu
+    Text = ("File")
+    { Menu2 Menu
+      Text = ("Open")
+    }
+  }
+  { TabPanel1 TabPanel
+    MoveScaled(3,1,58,25)
+    Index = 0
+    Text = ("Barcode")
+    { TextBox1 TextBox
+      MoveScaled(2,3,54,15)
+      Font = Font["Bold,24"]
+    }
+    Index = 0
+  }
+  { TabPanel2 TabPanel
+    MoveScaled(65,1,59,25)
+    Index = 0
+    Text = ("Quantity")
+    { SliderBox1 SliderBox
+      MoveScaled(4,5,50,9)
+      Font = Font["17"]
+    }
+    Index = 0
+  }
+  { TabPanel3 TabPanel
+    MoveScaled(3,28,58,49)
+    Index = 0
+    Text = ("Image")
+    { PictureBox1 PictureBox
+      MoveScaled(1,1,48,38)
+    }
+    Index = 0
+  }
+  { TabPanel4 TabPanel
+    MoveScaled(65,28,59,49)
+    Index = 0
+    Text = ("Tab 1")
+    { ListView1 ListView
+      MoveScaled(2,2,55,31)
+      Font = Font["18"]
+    }
+    { Button1 Button
+      MoveScaled(2,35,16,7)
+      Text = ("Cancel")
+    }
+    { Button2 Button
+      MoveScaled(25,35,32,7)
+      Text = ("Remove Stock")
+    }
+    Index = 0
+  }
+  { Timer1 #Timer
+    #MoveScaled(120,2)
+    Delay = 100
+  }
+}

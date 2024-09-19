@@ -115,6 +115,7 @@ Public Sub ReadCSV(GV As GridView)
     GV.Columns.Count = aFields.Max + 1
     GV.Columns[0].Width = 130
     GV.Columns[1].width = 200
+    GV.Columns[1].Alignment = Align.Center
     GV.Columns[2].width = 450
     GV.Columns[3].width = 75
     GV.Columns[4].width = 150

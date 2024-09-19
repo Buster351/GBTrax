@@ -1,0 +1,8 @@
+' Gambas class file
+
+
+Public Sub Form_Show()
+
+  Global.ReadCSV(GridView1)
+
+End

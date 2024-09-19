@@ -24,7 +24,7 @@ Dim res As Result
   Endif 
   res = Global.DBConn.Find("users")
   For Each res
-    
+   ListBox1.Add(res!name) 
   Next 
 End
 
@@ -113,5 +113,11 @@ Public Sub Menu4_Click()
 
   Add_User.ShowModal
   
+
+End
+
+Public Sub Stock_Click()
+
+  Stocky.ShowModal
 
 End

@@ -10,6 +10,9 @@
     { Menu4 Menu
       Text = ("Add User")
     }
+    { Stock Menu
+      Text = ("Stock")
+    }
   }
   { TabPanel1 TabPanel
     MoveScaled(3,1,58,25)

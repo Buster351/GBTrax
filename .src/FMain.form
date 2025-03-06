@@ -7,6 +7,9 @@
     { Menu2 Menu
       Text = ("Open")
     }
+    { Add_Stock Menu
+      Text = ("Add Stock")
+    }
     { Menu4 Menu
       Text = ("Add User")
     }

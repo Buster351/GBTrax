@@ -121,3 +121,10 @@ Public Sub Stock_Click()
   Stocky.ShowModal
 
 End
+
+Public Sub Add_Stock_Click()
+
+  Add_Stock_Form.ShowModal
+  
+
+End

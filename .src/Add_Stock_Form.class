@@ -13,3 +13,10 @@ Public Sub Form_Show()
   FileChooser1.Refresh
   Print "Form Show"
 End
+
+Public Sub FileChooser1_Change()
+Print FileChooser1.SelectedPath
+  If Exist(FileChooser1.SelectedPath) 
+    PictureBox1.Picture = Picture.Load(FileChooser1.SelectedPath)
+  Endif 
+End

@@ -17,6 +17,7 @@ Dim res As Result
   Me.Center
   
   Global.DB_Filename = Settings["Database/Filename", ""]
+  Print Global.DB_Filename
   If Exist(Global.DB_Filename) Then 
     Global.OpenDb()
   Else 

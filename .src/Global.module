@@ -10,8 +10,10 @@ Public Sub OpenDb()
   DBconn.Type = "sqlite3"
   DBconn.Host = File.Dir(DB_Filename)
   DBconn.Name = File.Name(DB_Filename)
+  DBConn.Close()
+  
   DBconn.Open()
-  Message.Info("Database Open " & DBConn.Opened, "OK")
+  'Message.Info("Database Open " & DBConn.Opened, "OK")
   
 End
 

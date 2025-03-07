@@ -37,6 +37,7 @@
     Text = ("File")
     { FileChooser1 FileChooser
       MoveScaled(2,2,57,41)
+      View = FileView.Preview
     }
     Index = 0
   }

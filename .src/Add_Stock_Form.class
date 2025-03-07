@@ -1,2 +1,15 @@
 ' Gambas class file
 
+
+Public Sub FileChooser1_Activate()
+
+  
+  
+
+End
+
+Public Sub Form_Show()
+  FileChooser1.View = FileView.Preview
+  FileChooser1.Refresh
+  Print "Form Show"
+End

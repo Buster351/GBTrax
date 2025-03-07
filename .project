@@ -9,4 +9,5 @@ Component=gb.db.form
 Component=gb.settings
 TabSize=2
 Language=en_AU
+ControlPublic=1
 Packager=1

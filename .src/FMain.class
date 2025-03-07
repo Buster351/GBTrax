@@ -15,7 +15,7 @@ Dim res As Result
   
   
   Me.Center
-  TextBox1.SetFocus
+  
   Global.DB_Filename = Settings["Database/Filename", ""]
   If Exist(Global.DB_Filename) Then 
     Global.OpenDb()
@@ -25,7 +25,10 @@ Dim res As Result
   res = Global.DBConn.Find("users")
   For Each res
    ListBox1.Add(res!name) 
-  Next 
+  Next
+  
+  TextBox1.SetFocus()
+  
 End
 
 Public Sub Menu2_Click()

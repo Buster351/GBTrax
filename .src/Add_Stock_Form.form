@@ -33,11 +33,12 @@
     Index = 0
   }
   { TabPanel4 TabPanel
-    MoveScaled(63,42,61,49)
+    MoveScaled(63,28,61,63)
     Index = 0
     Text = ("File")
     { FileChooser1 FileChooser
-      MoveScaled(2,2,57,41)
+      MoveScaled(2,2,57,55)
+      Filter = [("*.png;*jpg"), ("Image Files"), ("*.jpg"), ("Jpeg")]
       View = FileView.Preview
     }
     Index = 0

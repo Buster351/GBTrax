@@ -28,7 +28,7 @@ Dim res As Result
    ListBox1.Add(res!name) 
   Next
   
-  TextBox1.SetFocus()
+  
   
 End
 
@@ -137,5 +137,11 @@ Public Sub Menu3_Modstock_Click()
 
   ModStock.ShowModal
   
+
+End
+
+Public Sub Form_Open()
+
+  TextBox1.SetFocus()
 
 End

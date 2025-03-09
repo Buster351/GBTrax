@@ -42,3 +42,9 @@ Public Sub Button1_Click()
   Global.DBConn.Commit
   
 End
+
+Public Sub Form_Open()
+
+  TextBox2.SetFocus
+
+End

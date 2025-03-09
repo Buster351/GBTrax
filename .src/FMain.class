@@ -3,9 +3,9 @@
 
 Public Sub SliderBox1_Change()
 
-  If SliderBox1.Value = SliderBox1.MaxValue Then 
-    SliderBox1.MaxValue += 50
-  Endif
+  ' If SliderBox1.Value = SliderBox1.MaxValue Then 
+  '   SliderBox1.MaxValue += 50
+  ' Endif
 
 End
 
@@ -78,7 +78,9 @@ Dim res As Result
     If res.Available Then
       Label1.Text = res!partnum
       Label2.Text = res!description
-      SliderBox1.Value = res!amount   
+      If res!amount <> Null
+        SliderBox1.Value = res!amount   
+      Endif 
       If res!image <> Null Then
          PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
       Endif
@@ -108,7 +110,10 @@ End
 
 Public Sub Button2_Click()
   'Remove Stock From Database
-   
+  Dim res As Result
+  
+  res = Global.DBConn.edit("products", "barcode = &1", TextBox1.text) 
+  res!amount = res!amount - SliderBox1.Value
   
 
 End

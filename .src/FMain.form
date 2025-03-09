@@ -35,8 +35,23 @@
     Index = 0
     Text = ("Quantity")
     { SliderBox1 SliderBox
-      MoveScaled(4,5,50,9)
+      MoveScaled(19,2,35,5)
       Font = Font["17"]
+    }
+    { Label3 Label
+      MoveScaled(5,2,11,5)
+      Font = Font["12"]
+      Text = ("Available")
+    }
+    { Button3 Button
+      MoveScaled(2,11,15,5)
+      Font = Font["12"]
+      Text = ("Remove")
+    }
+    { SliderBox2 SliderBox
+      MoveScaled(19,11,35,5)
+      Font = Font["17"]
+      DefaultValue = 1
     }
     Index = 0
   }

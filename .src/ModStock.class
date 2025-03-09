@@ -1,0 +1,140 @@
+' Gambas class file
+
+
+Public Sub Form_Show()
+
+  
+  
+End
+
+
+Public Sub Fill_Grid_Rows()
+  
+  ' Dim res As Result
+  ' 
+  ' res = Global.DBConn.Find("products")
+  ' 
+  ' GridView1.Rows.Count = res.Count
+  ' GridView1.Rows.Height = 40
+  ' For Each res
+  ' GridView1[res.Index, 0].text = res!id 
+  ' GridView1[res.Index, 2].Text = res!partnum 
+  '  
+  ' GridView1[res.Index, 3].Text = res!amount 
+  ' Next
+  
+End
+
+Public Sub GridView1_Select()
+
+  ' Dim iRow As Integer = GridView1.Row
+  '   Dim iCol As Integer = GridView1.Column
+  ' 
+  '   ' Only add SpinBox in the "Quantity" column
+  '   If iCol = 3 Then
+  '       Dim spn As SpinBox = New SpinBox(GridView1) As "spnEditor"
+  '       'Dim spn As Slider = New Slider(GridView1) As "spnEditor"
+  '       spn.Ignore = True
+  '       spn.Expand = False
+  '       spn.Move(GridView1.Current.X, GridView1.Current.Y + 20, 60, 40)
+  '       'spn.Move(10, 10, 20, 20)
+  '       spn.MinValue = 0
+  '       spn.MaxValue = 100
+  '       If GridView1[iRow, iCol].text <> ""
+  '         spn.Value = Val(GridView1[iRow, iCol].text) ' Set current value
+  '       Else
+  '         spn.Value = 0
+  '       Endif 
+  '       
+  '       'spn.Move()   
+  '       
+  '       spn.Show
+  '       spn.SetFocus()
+  '       
+  '       Print "SpinBox Size: "; spn.W; "x"; spn.H
+  '   Endif
+
+End
+
+
+
+Public Sub Form_Open()
+
+  DataSource1.Connection = Global.DBConn
+  DataSource1.Table = "products"
+  DataBrowser1.View.Columns[0].Alignment = Align.Center
+  
+  ' GridView header setup
+  ' With GridView1
+  '   .Header = GridView.Horizontal
+  '   .Columns.Count = 4
+  '   .Columns[0].Text = "ID"
+  '   .Columns[1].text = "Picture"
+  '   .Columns[2].Text = "Part Number"
+  '   .Columns[3].Text = "Amount"
+  '   '.Columns[0].
+  ' End With
+
+
+  ' Fill_Grid_Rows()
+  
+'  
+  'DataBrowser1.Labels = ["ID", "Picture"]
+  
+End
+
+Public Sub DataSource1_MouseDown()
+
+  
+
+End
+
+Public Sub DataBrowser1_DblClick()
+
+  'DataBrowser1.
+
+End
+
+Public Sub DataBrowser1_MouseDown()
+
+  
+
+End
+
+Public Sub DataBrowser1_Data(Row As Integer, Column As Integer, Value As Variant)
+
+  'Print Row & "-" & column & "=" & Value
+
+End
+
+Public Sub DataControl1_GotFocus()
+
+  
+
+End
+
+Public Sub DataControl1_Validate(Value As Variant)
+
+ 
+ 
+  
+  Print "validate"
+
+End
+
+Public Sub DataSource1_Change()
+  
+  Dim tmp As New Variant[]
+  Dim res As Result
+  
+  If DataSource1.Current <> Null Then
+    tmp = DataSource1.Current
+    Print "data change" & " ID= " & Str(tmp[0])
+    res = Global.DBConn.Find("products", "id = &1", Str(tmp[0]))
+    
+      PictureBox1.Picture = Global.Get_scaled_picture_from_Blob(res!image, PictureBox1.w, PictureBox1.H)
+    
+  Endif 
+  
+
+End

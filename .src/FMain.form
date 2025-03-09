@@ -5,7 +5,7 @@
   { Menu1 Menu
     Text = ("File")
     { Menu2 Menu
-      Text = ("Open")
+      Text = ("Open Database")
     }
     { Add_Stock Menu
       Text = ("Add Stock")
@@ -15,6 +15,9 @@
     }
     { Stock Menu
       Text = ("Stock")
+    }
+    { Menu3_Modstock Menu
+      Text = ("Mod Stock")
     }
   }
   { TabPanel1 TabPanel
@@ -54,12 +57,12 @@
       MoveScaled(2,35,16,7)
       Text = ("Cancel")
     }
+    { ListBox1 ListBox
+      MoveScaled(2,2,55,31)
+    }
     { Button2 Button
       MoveScaled(25,35,32,7)
       Text = ("Remove Stock")
-    }
-    { ListBox1 ListBox
-      MoveScaled(2,2,55,31)
     }
     Index = 0
   }

@@ -22,3 +22,23 @@ Print FileChooser1.SelectedPath
     PictureBox1.Picture = Picture.Load(FileChooser1.SelectedPath)
   Endif 
 End
+
+Public Sub Button1_Click()
+
+  Dim res As Result
+  
+  res = Global.DBConn.Create("products")
+  res!barcode = TextBox2.Text
+  res!partnum = TextBox1.Text
+  res!image = Global.Convert_pic_to_blob(PictureBox1.Picture)
+  res!amount = SliderBox1.Value
+  res!date = Now
+  res!description = TextBox2.Text
+  res!price = 0
+  res!category = 1
+  res!brand = 1
+  
+  res.Update
+  Global.DBConn.Commit
+  
+End

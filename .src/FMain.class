@@ -78,7 +78,7 @@ Dim res As Result
     If res.Available Then
       Label1.Text = res!partnum
       Label2.Text = res!description
-         
+      SliderBox1.Value = res!amount   
       If res!image <> Null Then
          PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
       Endif
@@ -129,6 +129,13 @@ End
 Public Sub Add_Stock_Click()
 
   Add_Stock_Form.ShowModal
+  
+
+End
+
+Public Sub Menu3_Modstock_Click()
+
+  ModStock.ShowModal
   
 
 End

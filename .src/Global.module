@@ -50,7 +50,7 @@ End
 
 Public Function Scale_Picture(p As Picture, width As Integer, height As Integer, aspect As Boolean) As Picture
   
-  Dim img As Picture
+'  Dim img As Picture
   Dim newImg As New Image
   Dim ratioX As Float
   Dim ratioY As Float
@@ -159,3 +159,20 @@ Public Sub ReadCSV(GV As GridView)
 
   
 End
+Public Function Convert_pic_to_blob(pic As Picture) As String
+  
+  Return pic.ToString("PNG")
+End 
+
+  
+
+Public Function Get_scaled_picture_from_Blob(blo As Blob, width As Integer, height As Integer) As Picture
+  
+  Dim pic As Picture
+  Dim tmp As String
+  If blo.length <> 0 Then
+    pic = Picture.FromString(blo.Data)
+    Return Scale_Picture(pic, width, height, True)
+  Endif 
+End
+

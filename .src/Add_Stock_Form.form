@@ -48,8 +48,12 @@
     Index = 0
     Text = ("Part Number ")
     { TextBox1 TextBox
-      MoveScaled(2,1,53,6)
+      MoveScaled(2,1,28,6)
       Text = ("Part")
+    }
+    { Button1 Button
+      MoveScaled(48,1,8,6)
+      Text = ("Add")
     }
     Index = 0
   }
